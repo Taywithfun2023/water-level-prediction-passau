@@ -11,6 +11,14 @@
 <style>
 body {font-family: "Lato", sans-serif}
 .mySlides {display: none}
+.circle {
+            width: 50px;
+            height: 50px;
+            -webkit-border-radius: 25px;
+            -moz-border-radius: 25px;
+            border-radius: 25px;
+            background: blue;
+}
 </style>
 </head>
 <body>
@@ -52,8 +60,8 @@ body {font-family: "Lato", sans-serif}
   </div>
 
   <!-- Date Section -->
-  <div class="w3-black w3-center" id="date">
-    <h2 class="w3-wide w3-center">Date</h2>
+  <div class="w3-black" style="max-width:800px" id="date">
+    <h2 class="w3-wide">Date</h2>
     <input type="date" id="start" name="trip-start"
      value="2020-02-12"
      min="1997-01-01" max="2099-12-31">
@@ -71,10 +79,10 @@ body {font-family: "Lato", sans-serif}
           <th>Predicted Height</th>
         </tr>
         <tr>
-         <td id="actualDate">2020-02-11</td>
-         <td id="actualH">5,00</td>
-         <td id="actualPastH">4,20</td>
-         <td id="actualPredictedH">6,90</td>
+          <td>2020-02-11</td>
+          <td>5,00</td>
+          <td>4,20</td>
+          <td>6,90</td>
         </tr>
        </table> 
     </div>
@@ -83,7 +91,9 @@ body {font-family: "Lato", sans-serif}
   <!-- Diagram Section -->
   <div class="w3-black" id="diagram">
     <h2 class="w3-wide w3-center">Water Level</h2>
-    <div id="circle"></div>
+    <div id="circle">
+     <p>Ilz</p>
+    </div>
   </div>
 
   <!-- Contact Section -->
@@ -116,9 +126,6 @@ body {font-family: "Lato", sans-serif}
 <!-- End Page Content -->
 </div>
 
-<script type="text/javascript" src="predictions.json"></script>
-<script type="text/javascript" src="app.js"></script> 
-
 <!-- Footer -->
 <footer class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge">
   <i class="fa fa-facebook-official w3-hover-opacity"></i>
@@ -127,7 +134,9 @@ body {font-family: "Lato", sans-serif}
   <i class="fa fa-pinterest-p w3-hover-opacity"></i>
   <i class="fa fa-twitter w3-hover-opacity"></i>
   <i class="fa fa-linkedin w3-hover-opacity"></i>
-</footer> 
+</footer>
+<script type="text/javascript" src="predictions.json"></script>
+<script type="text/javascript" src="app.js"></script>  
 
 </body>
 </html>
