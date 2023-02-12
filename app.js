@@ -43,7 +43,7 @@ document.getElementById("start").addEventListener("change", function() {
     console.log(predictionArray);
     const max = predictionArray.reduce(function(prev, current) {
         return (prev.predicted > current.predicted) ? prev : current
-    })
+    });
     var hLogo = document.getElementById("logo");
     if(max.predicted > 770 ){
         hLogo.src = 'Blank diagram (4).png';
