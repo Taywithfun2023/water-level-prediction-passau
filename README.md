@@ -4,7 +4,6 @@ Passau, surrounded by the Inn, Danube, and Ilz rivers, is at high risk of floodi
 Team members: Emilio Dorigatti, Akshita Agarwal, Yeva Suzkom Karim Belaid, Xenofon Giannoulis, Tayfun Bönsch.
 
 # Website
-The website displays the model's prediction for 2020 and is accessible at [https://taybone2305.github.io/water-level-prediction-passau](https://taybone2305.github.io/water-level-prediction-passau).
 
 # Predictions
 
@@ -33,13 +32,13 @@ The chosen models were linear support vector machines for regression and classif
 The training script computes absoluted and squared error for regression and average precision score and accuracy for classification for each threshold and prediction horizon.
 
 ## Web Application
-- technology: github-pages 
-- works for desktop and mobile
-- URL: https://taybone2305.github.io/water-level-prediction-passau/
-- structure: 
+The website displays the model's prediction for 2020 and is accessible at [https://taybone2305.github.io/water-level-prediction-passau](https://taybone2305.github.io/water-level-prediction-passau).
+It is hosted on github pages and works both on desktop and mobile.
+
+Structure:
   1) Navigation bar: jump to sections & search function
   2) Map: overview of Passau (caption); future feature: show (non-)accessible areas with colour patches
   3) Date: choosing a date is necessary in order to get the desired results
   4) Data: analysis based on the used model (see upper section of README) -> alerts (pictures), predictions, historical data
-  5) Contact: important information regarding contact persons for citizen 
+  5) Contact: important information regarding contact persons for citizen
   6) Social Media: footer
