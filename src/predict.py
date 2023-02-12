@@ -6,7 +6,7 @@ import pandas as pd
 import joblib
 from sklearn.preprocessing import StandardScaler
 from sklearn.svm import LinearSVR, LinearSVC
-from train import make_data
+from train import make_data, NaivelyCalibratedLinearSVC
 
 
 @click.command()
@@ -34,10 +34,10 @@ def main(regression_model_path, classification_model_path, data_path, preds_path
     model, scaler, threshold = obj['model'], obj['scaler'], obj['threshold']
     if threshold is None:
         raise RuntimeError('regression model passed for classification')
-    psc = model.decision_function(scaler.transform(test_data))
+    psc = model.predict_proba(scaler.transform(test_data))[:, 1]
     ysc = labels_by_offset[1].ravel() > threshold
     print('APS:', average_precision_score(ysc, psc))
-    print('ACC:', np.mean((ysc > 0.5) == (psc > 0)))
+    print('ACC:', np.mean((ysc > 0.5) == (psc > 0.5)))
 
     with open(preds_path, 'w') as f:
         json.dump({

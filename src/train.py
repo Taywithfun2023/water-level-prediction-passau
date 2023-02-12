@@ -1,16 +1,36 @@
 import pandas as pd
 from sklearn.metrics import average_precision_score
+from sklearn.calibration import CalibratedClassifierCV
 import numpy as np
 import click
 import json
 import os
 import io
 from collections import Counter
+from sklearn.model_selection import TimeSeriesSplit
 from sklearn.ensemble import RandomForestRegressor
 from tqdm import trange
 from sklearn.preprocessing import StandardScaler
 from sklearn.svm import LinearSVR, LinearSVC
 import joblib
+
+
+
+# https://scikit-learn.org/stable/auto_examples/calibration/plot_calibration_curve.html
+class NaivelyCalibratedLinearSVC(LinearSVC):
+    def fit(self, X, y):
+        super().fit(X, y)
+        df = self.decision_function(X)
+        self.df_min_ = df.min()
+        self.df_max_ = df.max()
+
+    def predict_proba(self, X):
+        df = self.decision_function(X)
+        calibrated_df = (df - self.df_min_) / (self.df_max_ - self.df_min_)
+        proba_pos_class = np.clip(calibrated_df, 0, 1)
+        proba_neg_class = 1 - proba_pos_class
+        proba = np.c_[proba_neg_class, proba_pos_class]
+        return proba
 
 
 def make_data(df, offsets):
@@ -84,12 +104,16 @@ def main(train_data, output_folder):
                 if not any(y_test):
                     continue
 
-                sv = LinearSVC(C=25.0, dual=False, loss="squared_hinge", tol=1e-05)
-                sv.fit(xs.transform(X_train), y_train, sample_weight=np.exp(ws))
-                ps = sv.decision_function(xs.transform(X_test))
+                sv = CalibratedClassifierCV(
+                    NaivelyCalibratedLinearSVC(C=25.0, dual=False, loss="squared_hinge", tol=1e-05),
+                    cv=TimeSeriesSplit(5), method="isotonic"
+                )
+                sv.fit(xs.transform(X_train), y_train)
+                ps = sv.predict_proba(xs.transform(X_test))[:, 1]
 
                 print('offset', o, 'threshold', t)
                 print('  aps:', average_precision_score(y_test.flatten(), ps))
+                print('  acc:', np.mean(((y_test.flatten() > 0.5) == (ps > 0.5))))
 
             pred_df.append(pd.DataFrame({
                 'date': dates[train_test_cut:],
@@ -109,7 +133,7 @@ def main(train_data, output_folder):
     pdf['date'] = pdf['date'].astype(str)
 
     rows = [dict(zip(pdf.columns, c)) for c in pdf.itertuples(False, None)]
-    with open(f'{output_folder}/predictions.json', 'w') as f:
+    with open(f'{output_folder}/train-predictions.json', 'w') as f:
         json.dump(rows, f)
 
 

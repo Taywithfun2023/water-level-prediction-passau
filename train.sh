@@ -7,6 +7,7 @@ else
     source venv/bin/activate
 fi
 
+
 mkdir -p dev
 
 if [[ ! -e dev/train-data.csv ]]; then
