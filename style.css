@@ -1,15 +1,14 @@
 th, td {
   border: 1px solid black;
-  border-radius: 10px;
+  border-radius: 10px; 
+  text-align: left;
 }
 
-  .circle {
-  width: 500px;
-  height: 500px;
-  line-height: 500px;
-  border-radius: 50%;
-  font-size: 50px;
-  color: #fff;
-  text-align: center;
-  background: #000
-  }
+#diagram {
+  width: 50px;
+  height: 50px;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  border-radius: 25px;
+  background: red;
+}
