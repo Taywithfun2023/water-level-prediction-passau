@@ -76,8 +76,8 @@ def main(train_data, output_folder):
     thresholds = [600, 700, 740, 770, None]
 
     pred_df = []
-    for t in thresholds:
-        for o in offsets:
+    for o in offsets:
+        for t in thresholds:
             # data prep
             X_train, y_train = train_data[:train_test_cut], test_data_by_offset[o][:train_test_cut]
             X_test, y_test = train_data[train_test_cut:], test_data_by_offset[o][train_test_cut:]
