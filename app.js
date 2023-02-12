@@ -44,11 +44,11 @@ document.getElementById("start").addEventListener("change", function() {
     const h_actualDate = document.getElementById("actualDate");
     h_actualDate.innerHTML = input;
     const h_actualH = document.getElementById("actualH");
-    h_actualH.innerHTML = predict.offset;
+    h_actualH.innerHTML = predictionArray.offset;
     const h_actualPastH = document.getElementById("actualPastH");
-    h_actualPastH.innerHTML = predict.observed;
+    h_actualPastH.innerHTML = predictionArray.observed;
     const h_actualPredictedH = document.getElementById("actualPredictedH");
-    h_actualPredictedH.innerHTML = predict.predicted;
+    h_actualPredictedH.innerHTML = predictionArray.predicted;
     //console.log(mydata[0]);
     console.log(dateEntered); //e.g. Fri Nov 13 2015 00:00:00 GMT+0000 (GMT Standard Time)
 });
