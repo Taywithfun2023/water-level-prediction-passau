@@ -39,7 +39,7 @@ document.getElementById("start").addEventListener("change", function() {
     var input = this.value;
     var dateEntered = new Date(input);
     console.log(input); //e.g. 2015-11-13
-    const predictionArray = mydata.find(predict => predict.date === input);
+    const predictionArray = mydata.filter(predict => predict.date.indexOf(input) !== -1);
     console.log(predictionArray);
     const max = predictionArray.reduce(function(prev, current) {
         return (prev.predicted > current.predicted) ? prev : current
