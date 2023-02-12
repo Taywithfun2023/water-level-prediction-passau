@@ -41,14 +41,17 @@ document.getElementById("start").addEventListener("change", function() {
     console.log(input); //e.g. 2015-11-13
     const predictionArray = mydata.find(predict => predict.date === input);
     console.log(predictionArray);
-    const h_actualDate = document.getElementById("actualDate");
-    h_actualDate.innerHTML = input;
-    const h_actualH = document.getElementById("actualH");
-    h_actualH.innerHTML = predictionArray.offset;
-    const h_actualPastH = document.getElementById("actualPastH");
-    h_actualPastH.innerHTML = predictionArray.observed;
-    const h_actualPredictedH = document.getElementById("actualPredictedH");
-    h_actualPredictedH.innerHTML = predictionArray.predicted;
-    //console.log(mydata[0]);
-    console.log(dateEntered); //e.g. Fri Nov 13 2015 00:00:00 GMT+0000 (GMT Standard Time)
+    const max = predictionArray.reduce(function(prev, current) {
+        return (prev.predicted > current.predicted) ? prev : current
+    })
+    var hLogo = document.getElementById("logo");
+    if(max.predicted > 770 ){
+        hLogo.src = 'Blank diagram (4).png';
+    }else if(max.predicted > 740){
+        hLogo.src = 'Blank diagram (3).png';
+    }else if (max.predicted > 700){
+        hLogo.src = 'Blank diagram (2).png';
+    }else{
+        hLogo.src = 'Blank diagram (1).png';
+    }
 });

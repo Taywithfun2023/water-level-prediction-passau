@@ -11,14 +11,6 @@
 <style>
 body {font-family: "Lato", sans-serif}
 .mySlides {display: none}
-.circle {
-            width: 50px;
-            height: 50px;
-            -webkit-border-radius: 25px;
-            -moz-border-radius: 25px;
-            border-radius: 25px;
-            background: blue;
-}
 </style>
 </head>
 <body>
@@ -51,26 +43,32 @@ body {font-family: "Lato", sans-serif}
 
   <!-- Google Maps -->
   <div class="mySlides w3-display-container w3-center" id="map">
-              <h2 class="w3-wide">Map</h2>
+  <h2 class="w3-wide">Map</h2>
     <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d11093.44366480694!2d13.469383438009853!3d48.573234131261565!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sde!2sde!4v1676204406629!5m2!1sde!2sde" width="1920" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
               <br> </br>    
       <h3>Passau</h3>
       <p><b>Here you can see the safe vs. flooded zones</b></p>   
     </div>
   </div>
+  
+  
 
   <!-- Date Section -->
   <div class="w3-black w3-center" id="date">
-    <h2 class="w3-wide w3-center">Date</h2>
+    <h2 class="w3-wide w3-center">Please choose a date:</h2>
     <input type="date" id="start" name="trip-start"
      value="2020-02-12"
      min="1997-01-01" max="2099-12-31">
   </div>
+  <div class="w3-black w3-center" >
+    <img id='logo' class="w3-center" src="Blank diagram (1).png" width="200" height="200" alt="Safe">
+  </div>
+   
   
   <!-- Table Section -->
   <div class="w3-container w3-content w3-center w3-padding-64" id="table">
     <div class="w3-container w3-content w3-padding-64" style="max-width:800px">
-      <h2 class="w3-wide w3-center">Past Floods</h2>
+      <h2 class="w3-wide w3-center">Analyzed Data</h2>
        <table class="center">
         <tr>
           <th>Date</th>
@@ -79,22 +77,48 @@ body {font-family: "Lato", sans-serif}
           <th>Predicted Height</th>
         </tr>
         <tr>
-         <td id="actualDate">2020-02-11</td>
-         <td id="actualH">5,00</td>
-         <td id="actualPastH">4,20</td>
-         <td id="actualPredictedH">6,90</td>
+         <td id="actualDate">2020-02-12</td>
+         <td id="actualH">0</td>
+         <td id="actualPastH">0</td>
+         <td id="actualPredictedH">0</td>
+        </tr>
+       </table> 
+    </div>
+  </div>
+            
+   <!-- Table Section -->
+  <div class="w3-container w3-content w3-center w3-padding-64" id="table">
+    <div class="w3-container w3-content w3-padding-64" style="max-width:800px">
+      <h2 class="w3-wide w3-center">Past Floods</h2>
+       <table class="center">
+        <tr>
+          <th>Year</th>
+          <th>Highest Water Level in cm</th>
+        </tr>
+        <tr>
+         <td id="actualDate">2021</td>
+         <td id="actualH">824</td>
+        </tr>
+        <tr>
+         <td id="actualDate">2013</td>
+         <td id="actualH">1289</td>
+        </tr>
+        <tr>
+         <td id="actualDate">2002</td>
+         <td id="actualH">1081</td>
+        </tr>
+        <tr>
+         <td id="actualDate">1954</td>
+         <td id="actualH">1117</td>
+        </tr>
+        <tr>
+         <td id="actualDate">1920</td>
+         <td id="actualH">1047</td>
         </tr>
        </table> 
     </div>
   </div>
 
-  <!-- Diagram Section -->
-  <div class="w3-black" id="diagram">
-    <h2 class="w3-wide w3-center">Water Level</h2>
-    <div id="circle">
-     <p>Ilz</p>
-    </div>
-  </div>
 
   <!-- Contact Section -->
   <div class="w3-container w3-content w3-padding-64" style="max-width:800px" id="contact">
