@@ -26,7 +26,7 @@ The website displays the model's prediction for 2020 and is accessible at [https
 The predictions are based on the water level measured at each station and the sum of precipitations in the last three days.
 In order to exclude outliers, the predictions are based on the *third largest* water level measured in the next 1, 2, 3, 4 and 5 days.
 We trained regression models to directly predict the (third largest) water level, as well as classification models to predict the probability that the (third largest) water level is above 600, 700, 740, and 770 centimeters.
-These probabilities can be used in aggregate to derive risk scores.
+The thresholds, especially the latter two, were chosen based on [the official guidelines](https://www.hochwasser-passau.de/en/#pegelstaende), and the resulting probabilities can be used in aggregate to derive risk scores.
 
 We used [TPOT](https://github.com/EpistasisLab/tpot) to find the best model and its hyperparameters on the regression task and used the analogous version for classification, using data from 1997 to 2019 for the optimization and the data for 2020 as held-out for evaluation and the final website demonstration.
 The chosen models were linear support vector machines for regression and classification, the latter calibrated via isotonic regression on a 5-fold time-splitted cross-validation.
