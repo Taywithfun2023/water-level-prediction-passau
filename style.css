@@ -9,8 +9,8 @@ th, td {
 }
 
 .container {
-  width: 1920px;
-  height: 400px;
+  width: auto;
+  height: auto;
   margin: 50px;
   outline: solid 1px black;
   display: flex;
