@@ -1,0 +1,8 @@
+venv/
+data/
+test/
+dev/
+*.swp
+*.swo
+__pycache__/
+.ipynb_checkpoints
