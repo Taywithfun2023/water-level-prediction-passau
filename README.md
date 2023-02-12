@@ -31,3 +31,15 @@ These probabilities can be used in aggregate to derive risk scores.
 We used [TPOT](https://github.com/EpistasisLab/tpot) to find the best model and its hyperparameters on the regression task and used the analogous version for classification, using data from 1997 to 2019 for the optimization and the data for 2020 as held-out for evaluation and the final website demonstration.
 The chosen models were linear support vector machines for regression and classification, the latter calibrated via isotonic regression on a 5-fold time-splitted cross-validation.
 The training script computes absoluted and squared error for regression and average precision score and accuracy for classification for each threshold and prediction horizon.
+
+## Web Application
+- technology: github-pages 
+- works for desktop and mobile
+- URL: https://taybone2305.github.io/water-level-prediction-passau/
+- structure: 
+  1) Navigation bar: jump to sections & search function
+  2) Map: overview of Passau (caption); future feature: show (non-)accessible areas with colour patches
+  3) Date: choosing a date is necessary in order to get the desired results
+  4) Data: analysis based on the used model (see upper section of README) -> alerts (pictures), predictions, historical data
+  5) Contact: important information regarding contact persons for citizen 
+  6) Social Media: footer
