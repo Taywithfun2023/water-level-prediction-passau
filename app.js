@@ -41,6 +41,8 @@ document.getElementById("start").addEventListener("change", function() {
     console.log(input); //e.g. 2015-11-13
     const predictionArray = mydata.find(predict => predict.date === input);
     console.log(predictionArray);
-    console.log(mydata[0]);
+    const h_actualDate = document.getElementById("actualDate");
+    h_actualDate.innerHTML = input
+    //     console.log(mydata[0]);
     console.log(dateEntered); //e.g. Fri Nov 13 2015 00:00:00 GMT+0000 (GMT Standard Time)
 });
